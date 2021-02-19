@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(PROJECT_NAME Roman_Arabic)
+set(PROJECT_NAME Template)
 project(${PROJECT_NAME})
 
 # TODO(Korniakov): not sure if these lines are needed
