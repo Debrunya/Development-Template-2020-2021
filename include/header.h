@@ -1,27 +1,29 @@
-#ifndef INCLUDE_ROMAN_H_
-#define INCLUDE_ROMAN_H_
+#include <string>
+#include <iostream>
+using namespace std;
 
-struct roman {
-  std::string value;
+
+struct roman
+{
+    string val;
 };
 
-struct arabic {
-  int value;
+struct arabic
+{
+    int val;
 };
 
-// I V X  -  M C
+class Convertor
+{
+    roman r_struct;
+    arabic a_struct;
 
-class Convertor {
-  roman value_1;
-  arabic value_2;
+public:
+    void toArabic(roman t);
+    void toRoman(arabic t);
 
-  arabic toArabic(roman t);
-  roman toRoman(arabic t);
+    string get_r_struct();
+    int get_a_struct();
 
-  bool check(roman &t);        // IIII - IV
-
-  // оператор ввода-вывода, либо print
-
+    friend ostream& operator<<(ostream& out, Convertor& c);
 };
-
-#endif  // INCLUDE_ROMAN_H_
