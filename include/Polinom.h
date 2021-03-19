@@ -71,20 +71,24 @@ void Polinom::SortMonoms()
     if (monoms->GetFirst()->pNext == nullptr)
         return;
     TNode<int, float>* a, * b, * p, * h = nullptr;
-    for (TNode<int, float>* i = monoms->GetFirst(); i != nullptr; ) {
+    for (TNode<int, float>* i = monoms->GetFirst(); i != nullptr; )
+    {
         a = i;
         i = i->pNext;
         b = h;
-        for (p = nullptr; (b != nullptr) && (a->key < b->key); ) {
+        for (p = nullptr; (b != nullptr) && (a->key < b->key); )
+        {
             p = b;
             b = b->pNext;
         }
 
-        if (p == nullptr) {
+        if (p == nullptr)
+        {
             a->pNext = h;
             h = a;
         }
-        else {
+        else
+        {
             a->pNext = b;
             p->pNext = a;
         }

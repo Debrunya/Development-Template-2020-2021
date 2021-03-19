@@ -35,7 +35,7 @@ public:
 TNode<int, float> ::TNode(unsigned int deg_x, unsigned int deg_y, unsigned int deg_z, float coeff, TNode<int, float>* next)
 {
     if (deg_x > 19 || deg_x < 0 || deg_y > 19 || deg_y < 0 || deg_z > 19 || deg_z < 0)
-        throw "invalid parameter";
+        throw std::logic_error("invalid parameter");
     this->key = deg_x * pow(20, 2) + deg_y * 20 + deg_z;
     this->pData = coeff;
     this->pNext = next;
