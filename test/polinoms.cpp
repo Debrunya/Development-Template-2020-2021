@@ -1,4 +1,4 @@
-#include "header.h"
+#include "Polinom.h"
 
 #include <gtest.h>
 
