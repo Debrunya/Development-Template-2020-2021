@@ -34,9 +34,9 @@ public:
 
 TNode<int, float> ::TNode(unsigned int deg_x, unsigned int deg_y, unsigned int deg_z, float coeff, TNode<int, float>* next)
 {
-    if (deg_x > 9 || deg_x < 0 || deg_y > 9 || deg_y < 0 || deg_z > 9 || deg_z < 0)
+    if (deg_x > 19 || deg_x < 0 || deg_y > 19 || deg_y < 0 || deg_z > 19 || deg_z < 0)
         throw "invalid parameter";
-    this->key = deg_x * 100 + deg_y * 10 + deg_z;
+    this->key = deg_x * pow(20, 2) + deg_y * 20 + deg_z;
     this->pData = coeff;
     this->pNext = next;
 }
@@ -72,17 +72,15 @@ const TNode<int, float>& TNode<int, float> :: operator=(const TNode<int, float> 
 
 TNode<int, float> TNode<int, float>::operator*(const TNode<int, float> & monom)
 {
-    int deg_x1 = this->key / 100;
-    int deg_y1 = (this->key - deg_x1 * 100) / 10;
-    int deg_z1 = this->key - deg_x1 * 100 - deg_y1 * 10;
-    int deg_x2 = monom.key / 100;
-    int deg_y2 = (monom.key - deg_x2 * 100) / 10;
-    int deg_z2 = monom.key - deg_x2 * 100 - deg_y2 * 10;
-    if (deg_z1 + deg_z2 > 9 || deg_y1 + deg_y2 > 9 || deg_x1 + deg_x2 > 9)
+    int deg_x1 = this->key / pow(20, 2);
+    int deg_y1 = (this->key - deg_x1 * pow(20, 2)) / 20;
+    int deg_z1 = this->key - deg_x1 * pow(20,2) - deg_y1 * 20;
+    int deg_x2 = monom.key / pow(20, 2);
+    int deg_y2 = (monom.key - deg_x2 * pow(20, 2)) / 20;
+    int deg_z2 = monom.key - deg_x2 * pow(20, 2) - deg_y2 * 20;
+    if (deg_z1 + deg_z2 > 19 || deg_y1 + deg_y2 > 19 || deg_x1 + deg_x2 > 19)
         throw "invalid parameter";
     TNode<int, float> product(this->key + monom.key, this->pData * monom.pData);
-    /*product->key = this->key + monom.key;
-    product->pData = this->pData * monom.pData;*/
     return product;
 }
 
