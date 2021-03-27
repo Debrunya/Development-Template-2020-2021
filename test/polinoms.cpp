@@ -17,20 +17,44 @@ TEST(test_monom, can_create_monom_if_degree_is_lower_than_the_maximum_degrees)
 
 TEST(test_monom, cant_create_monom_if_degree_is_greater_than_the_maximum_x_degree)
 {
-    TNode<int, float> m(20, 0, 0, 1);
-    ASSERT_ANY_THROW();
+    int n = 0;
+    try
+    {
+        TNode<int, float> m(20, 0, 0, 1);
+    }
+    catch (logic_error)
+    {
+        n = 1;
+    }
+    EXPECT_EQ(1, n);
 }
 
 TEST(test_monom, cant_create_monom_if_degree_is_greater_than_the_maximum_y_degree)
 {
-    TNode<int, float> m(0, 20, 0, 1);
-    ASSERT_ANY_THROW();
+    int n = 0;
+    try
+    {
+        TNode<int, float> m(0, 20, 0, 1);
+    }
+    catch (logic_error)
+    {
+        n = 1;
+    }
+    EXPECT_EQ(1, n);
 }
 
 TEST(test_monom, cant_create_monom_if_degree_is_greater_than_the_maximum_z_degree)
 {
-    TNode<int, float> m(0, 0, 20, 1);
-    ASSERT_ANY_THROW();
+    int n = 0;
+    try
+    {
+        TNode<int, float> m(0, 0, 20, 1);
+    }
+    catch (logic_error)
+    {
+        n = 1;
+    }
+    EXPECT_EQ(1, n);
 }
 
 TEST(test_monom, correct_degree)
