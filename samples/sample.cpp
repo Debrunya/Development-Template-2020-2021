@@ -1,69 +1,96 @@
-#include "Polinom.h"
+#include "TText.h"
 
-#include <stdlib.h>
-#include <string>
+#include <Windows.h>
+#include <conio.h>
 #include <iostream>
 using namespace std;
 
+void console(Text text)
+{
+    int op;
+    string temp;
+
+
+    while (true)
+    {
+        system("cls");
+        cout << text << endl;
+        cout << "0 - Exit" << endl;
+        cout << "6 - Right" << endl;
+        cout << "4 - Left" << endl;
+        cout << "8 - Top" << endl;
+        cout << "3 - Add to Right" << endl;
+        cout << "1 - Add to Left" << endl;
+        cout << "2 - Remove" << endl;
+        cout << "5 - Replace" << endl;
+        cout << "7 - Replace Key" << endl;
+        cout << "9 - Replace Value" << endl;
+        cout << "f - Find by key" << endl;
+
+        try
+        {
+            op = _getch();
+            switch (op)
+            {
+            case 48: return; break;
+            case 54: text.right(); break;
+            case 52: text.left(); break;
+            case 56: text.top(); break;
+            case 51:
+                cout << "Enter string:" << endl;
+                cin >> temp;
+                text.addRight(temp);
+                break;
+            case 49:
+                cout << "Enter string:" << endl;
+                cin >> temp;
+                text.addLeft(temp);
+                break;
+            case 50:
+                text.remove();
+                break;
+            case 53:
+                cout << "Enter string:" << endl;
+                cin >> temp;
+                text.replace(temp);
+                break;
+            case 55:
+                cout << "Enter string:" << endl;
+                cin >> temp;
+                text.replaceKey(temp);
+                break;
+            case 57:
+                cout << "Enter string:" << endl;
+                cin >> temp;
+                text.replaceValue(temp);
+                break;
+            case 102:
+                cout << "Enter string:" << endl;
+                cin >> temp;
+                text.findValue(temp);
+                _getch();
+                break;
+            }
+        }
+        catch (logic_error l)
+        {
+            cout << l.what() << endl;
+            _getch();
+        }
+    }
+}
+
 int main()
 {
-    int selector = 10;
+    Text text;
+    text.addLeft("L1");
+    text.addLeft("L2");
+    text.left();
+    text.addLeft("L3");
+    text.addRight("R1");
+    text.top();
 
-    while (selector != 0)
-    {
-        cout << "Continue or exit? Enter 0 to exit. In other way enter 1" << endl;
-        int exit;
-        cin >> exit;
-        cout << endl;
-
-        if (exit != 0)
-        {
-            string polinom1, polinom2;
-
-            cout << "Enter first polinom:" << endl;
-            cin >> polinom1;
-            Polinom pol1(polinom1);
-
-            cout << "Enter second polynom:" << endl;
-            cin >> polinom2;
-            Polinom pol2(polinom2);
-
-            cout << endl;
-
-            cout << "Select the action:" << endl;
-            cout << "Enter 1 to sum up polinoms" << endl << "Enter 2 to substract second polinom from first" << endl << "Enter 3 to substract first polinom from second" << endl << "Enter 4 to multiplicate polinoms" << endl;
-            cin >> selector;
-
-            switch (selector)
-            {
-            case 1:
-            {
-                cout << pol1 + pol2 << endl;
-                break;
-            }
-            case 2:
-            {
-                cout << pol1 - pol2 << endl;
-                break;
-            }
-            case 3:
-            {
-                cout << pol2 - pol1 << endl;
-                break;
-            }
-            case 4:
-            {
-                cout << pol1 * pol2 << endl;
-                break;
-            }
-            default:
-                cout << "Wrong number" << endl;
-            }
-
-            cout << endl << endl;
-        }
-        else selector = 0;
-    }
+    console(text);
 
     return 0;
 }

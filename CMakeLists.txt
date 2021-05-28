@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(PROJECT_NAME Polinom)
+set(PROJECT_NAME Text)
 project(${PROJECT_NAME})
 
 # TODO(Korniakov): not sure if these lines are needed
