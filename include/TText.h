@@ -40,6 +40,8 @@ public:
     void findKey(Node* root, string key);
     void findValue(string key);
 
+    string getValCurr();
+
     void printTRL(ostream& ost, Node* root, Node* curr, int level);
     friend ostream& operator<<(ostream& ost, Text& text)
     {

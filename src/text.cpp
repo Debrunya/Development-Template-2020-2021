@@ -265,6 +265,11 @@ void Text::replaceValue(string str)
     return;
 }
 
+string Text::getValCurr()
+{
+    return curr->val;
+}
+
 void Text::findKey(Node* root, string key)
 {
     if (root == NULL) return;
@@ -289,7 +294,6 @@ void Text::findKey(Node* root, string key)
 }
 void Text::findValue(string key)
 {
-    string value;
     findKey(root, key);
     return;
 }
