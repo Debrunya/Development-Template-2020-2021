@@ -87,6 +87,7 @@ int main()
     text.addLeft("L2");
     text.left();
     text.addLeft("L3");
+    text.addRight("R2");
     text.addRight("R1");
     text.top();
 
